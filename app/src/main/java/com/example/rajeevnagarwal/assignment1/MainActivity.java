@@ -1,37 +1,51 @@
 package com.example.rajeevnagarwal.assignment1;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
-
 public class MainActivity extends AppCompatActivity {
 
+    Button mCorrectButton,mIncorrectButton,mNextButton;
+    TextView mQuestionView;
+    Integer QuestionIndex=1;
+    Integer CurrentPrime=0;
     String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG,"In OnCreate");
         setContentView(R.layout.activity_main);
+        intialize();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if(savedInstanceState!=null)
+        {
+            QuestionIndex = savedInstanceState.getInt("CurrentQuestion",0);
+            CurrentPrime = savedInstanceState.getInt("CurrentPrime",0);
+        }
+        else {
+            QuestionIndex = 1;
+            CurrentPrime = 0;
+        }
+        getQuestion();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"Hello",Toast.LENGTH_SHORT).show();
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState)
+    {
+        super.onSaveInstanceState(savedInstanceState);
+        Log.d(TAG,"In onSaveInstanceState");
+        savedInstanceState.putInt("CurrentQuestion",QuestionIndex);
+        savedInstanceState.putInt("CurrentPrime",CurrentPrime);
+    }
+
     @Override
     protected void onResume()
     {
@@ -42,13 +56,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop()
     {
         super.onStop();
-        Log.d(TAG,"In onStop()");
+        Log.d(TAG, "In onStop()");
     }
     @Override
     protected void onStart()
     {
         super.onStart();
-        Log.d(TAG,"In onStart()");
+        Log.d(TAG, "In onStart()");
     }
     @Override
     protected void onPause()
@@ -60,9 +74,89 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy()
     {
         super.onDestroy();
-        Log.d(TAG,"In onDestroy()");
+        Log.d(TAG, "In onDestroy()");
     }
+    public void getQuestion() {
+        if(CurrentPrime==0) {
+            CurrentPrime = generatePrime();
+        }
+        mQuestionView.setText(QuestionIndex + ". " + "Is " + CurrentPrime + " a Prime number?");
 
+    }
+    public void intialize()
+    {
+        Log.d(TAG,"In initialize()");
+        mCorrectButton = (Button)findViewById(R.id.buttonCorrect);
+        mIncorrectButton = (Button)findViewById(R.id.buttonIncorrect);
+        mNextButton = (Button)findViewById(R.id.buttonNext);
+        mQuestionView = (TextView)findViewById(R.id.QuestionView);
+    }
+    public Integer generatePrime()
+    {
+        return (1+(int)(Math.random()*(1000-1)+1));
+    }
+    public void onNext(View v)
+    {
+        CurrentPrime = 0;
+        QuestionIndex = ((QuestionIndex+1)%1001);
+        getQuestion();
+    }
+    public void onCorrect(View v)
+    {
+        if(checkPrime(CurrentPrime)==true) {
+            Toast.makeText(getApplicationContext(), "Your answer is Correct", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Your answer is Incorrect", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+    public void onIncorrect(View v)
+    {
+        if(checkPrime(CurrentPrime)==true) {
+            Toast.makeText(getApplicationContext(), "Your answer is Incorrect", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Your answer is Correct", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+    public Boolean checkPrime(Integer n)
+    {
+        if(n==1)
+        {
+            return false;
+        }
+        else if(n==2)
+        {
+            return true;
+        }
+        else if(n==3)
+        {
+            return true;
+        }
+        else
+        {
+            int flag=0;
+            for(int i=2;i<=Math.sqrt(n);i++)
+            {
+                if(n%i==0)
+                {
+                   flag = 1;
+                    break;
+                }
+
+            }
+            if(flag==0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">Assignment1</string>
+    <string name="app_name">PrimeQuiz</string>
     <string name="action_settings">Settings</string>
+    <string name="correct">True</string>
+    <string name="incorrect">False</string>
+    <string name="next">Next Question</string>
 </resources>
