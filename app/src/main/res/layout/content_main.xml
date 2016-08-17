@@ -21,6 +21,8 @@
         android:textColor="@color/black"
         android:layout_marginTop="114dp"
         android:id="@+id/QuestionView"
+        android:background="@drawable/question_drawable"
+        android:padding="5dp"
         android:layout_gravity="center"
        />
 
@@ -38,9 +40,10 @@
             android:layout_height="wrap_content"
             android:text="@string/correct"
             android:id="@+id/buttonCorrect"
-            android:drawableLeft="@mipmap/Correct"
+            android:drawableLeft="@mipmap/correct"
             android:onClick="onCorrect"
-            android:background="@drawable/button_drawable"/>
+            android:background="@drawable/button_drawable"
+            />
 
         <Button
             android:layout_marginLeft="@dimen/margin_left"
@@ -49,9 +52,10 @@
             android:text="@string/incorrect"
             android:paddingRight="@dimen/padding_right"
             android:id="@+id/buttonIncorrect"
-            android:drawableLeft="@mipmap/Wrong"
+            android:drawableLeft="@mipmap/wrong"
             android:onClick="onIncorrect"
-            android:background="@drawable/button_drawable"/>
+            android:background="@drawable/button_drawable"
+            />
     </LinearLayout>
 
     <Button
@@ -60,7 +64,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_top"
         android:id="@+id/buttonNext"
-        android:drawableRight="@mipmap/Forward"
+        android:drawableRight="@mipmap/forward"
         android:text="@string/next"
         android:paddingLeft="@dimen/padding_left"
         android:background="@drawable/button_drawable"
