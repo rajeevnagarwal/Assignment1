@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     Integer QuestionIndex=1; //Index for maintaining the question number
     Integer CurrentPrime=0; //Keep track of current prime number in the question
     String TAG = "MainActivity"; //Tag to identify activity in the logs
-    int[] prime;
+    int[] prime; //Array to track which indexes are prime numbers
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
