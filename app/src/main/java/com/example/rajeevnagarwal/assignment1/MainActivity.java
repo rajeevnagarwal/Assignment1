@@ -12,12 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
-    Button mCorrectButton,mIncorrectButton,mNextButton; //Button Objects
-    TextView mQuestionView; //Question TextView
-    Integer QuestionIndex=1; //Index for maintaining the question number
-    Integer CurrentPrime=0; //Keep track of current prime number in the question
-    String TAG = "MainActivity"; //Tag to identify activity in the logs
-    int[] prime; //Array to track which indexes are prime numbers
+    private Button mCorrectButton,mIncorrectButton,mNextButton; //Button Objects
+    private TextView mQuestionView; //Question TextView
+    private Integer QuestionIndex=1; //Index for maintaining the question number
+    private Integer CurrentPrime=0; //Keep track of current prime number in the question
+    private String TAG = "MainActivity"; //Tag to identify activity in the logs
+    private int[] prime; //Array to track which indexes are prime numbers
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
     //Applying Seive method
     public int[] Seive()
     {
+        Log.d(TAG, "In Seive()");
         int[] prime = new int[1001];
         for(int i=0;i<=1000;i++)
             prime[i] = 1;
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getQuestion() {
+        Log.d(TAG,"In getQuestion()");
         mNextButton.setEnabled(false);
         if(CurrentPrime==0) {
             CurrentPrime = generatePrime(); //Getting a random number
@@ -126,11 +128,13 @@ public class MainActivity extends AppCompatActivity {
     // This will generate a random number in the range [1,1000]
     public Integer generatePrime()
     {
+        Log.d(TAG, "In generatePrime()");
         return (1+(int)(Math.random()*(1000-1)+1));
     }
     // ActionListener for Next Question button
     public void onNext(View v)
     {
+        Log.d(TAG,"In onNext()");
         mIncorrectButton.setEnabled(true);
         mCorrectButton.setEnabled(true);
         CurrentPrime = 0;
@@ -141,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
     public void onCorrect(View v)
     {
 
+        Log.d(TAG,"In onCorrect()");
         mIncorrectButton.setEnabled(false);
         mNextButton.setEnabled(true);
         if(checkPrime(CurrentPrime)) {
@@ -154,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
     // ActionListener for Incorrect button
     public void onIncorrect(View v)
     {
+        Log.d(TAG,"In onIncorrect()");
         mCorrectButton.setEnabled(false);
         mNextButton.setEnabled(true);
         if(checkPrime(CurrentPrime)) {
@@ -167,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
     // Function to check whether a given integer is prime or not
     public Boolean checkPrime(Integer n)
     {
+        Log.d(TAG,"In checkPrime()");
         if(prime[n]==0)
             return false;
         else
