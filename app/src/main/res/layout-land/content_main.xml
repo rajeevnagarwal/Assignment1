@@ -53,6 +53,29 @@
             android:drawableLeft="@mipmap/wrong"
             android:onClick="onIncorrect"
             android:background="@drawable/button_drawable"/>
+        <Button
+            android:layout_marginLeft="@dimen/button_margin_left"
+            android:paddingEnd="@dimen/padding_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hint"
+            android:id="@+id/buttonHint"
+            android:drawableLeft="@mipmap/hint_icon"
+            android:onClick="onHint"
+            android:background="@drawable/button_drawable"
+            />
+
+        <Button
+            android:layout_marginLeft="@dimen/margin_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cheat"
+            android:paddingRight="@dimen/padding_right"
+            android:id="@+id/buttonCheat"
+            android:drawableLeft="@mipmap/cheat_icon"
+            android:onClick="onCheat"
+            android:background="@drawable/button_drawable"
+            />
     </LinearLayout>
 
     <Button

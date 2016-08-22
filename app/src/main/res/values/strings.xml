@@ -4,4 +4,6 @@
     <string name="correct">True</string>
     <string name="incorrect">False</string>
     <string name="next">Next Question</string>
+    <string name="hint">Hint</string>
+    <string name="cheat">Cheat</string>
 </resources>

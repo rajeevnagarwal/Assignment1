@@ -170,6 +170,18 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+    // Function to handle Hint button click
+    public void onHint(View v)
+    {
+
+    }
+    // Function to handle Cheat button click
+    public void onCheat(View v)
+    {
+
+    }
+
+
     // Function to check whether a given integer is prime or not
     public Boolean checkPrime(Integer n)
     {
