@@ -6,4 +6,8 @@
     <string name="next">Next Question</string>
     <string name="hint">Hint</string>
     <string name="cheat">Cheat</string>
+    <string name="hintstr">You are about to take a hint!!</string>
+    <string name="cheatstr">You are about to cheat!!</string>
+    <string name="showhint">Show Hint</string>
+    <string name="showcheat">Show Cheat</string>
 </resources>

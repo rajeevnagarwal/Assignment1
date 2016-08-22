@@ -1,5 +1,6 @@
 package com.example.rajeevnagarwal.assignment1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         //Saving question index and the prime number
         savedInstanceState.putInt("CurrentQuestion",QuestionIndex);
         savedInstanceState.putInt("CurrentPrime", CurrentPrime);
-        savedInstanceState.putIntArray("prime",prime);
+        savedInstanceState.putIntArray("prime", prime);
     }
 
     @Override
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getQuestion() {
-        Log.d(TAG,"In getQuestion()");
+        Log.d(TAG, "In getQuestion()");
         mNextButton.setEnabled(false);
         if(CurrentPrime==0) {
             CurrentPrime = generatePrime(); //Getting a random number
@@ -173,12 +174,14 @@ public class MainActivity extends AppCompatActivity {
     // Function to handle Hint button click
     public void onHint(View v)
     {
-
+            Intent i = new Intent(this,HintActivity.class);
+            startActivity(i);
     }
     // Function to handle Cheat button click
     public void onCheat(View v)
     {
-
+            Intent i = new Intent(this,CheatActivity.class);
+            startActivity(i);
     }
 
 
