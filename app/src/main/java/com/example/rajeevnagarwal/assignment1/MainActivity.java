@@ -1,5 +1,6 @@
 package com.example.rajeevnagarwal.assignment1;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -181,7 +182,9 @@ public class MainActivity extends AppCompatActivity {
     public void onCheat(View v)
     {
             Intent i = new Intent(this,CheatActivity.class);
-            startActivity(i);
+            i.putExtra("prime",CurrentPrime);
+            i.putExtra("result",checkPrime(CurrentPrime));
+            startActivityForResult(i,1);
     }
 
 
@@ -193,6 +196,27 @@ public class MainActivity extends AppCompatActivity {
             return false;
         else
             return true;
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
+        Log.d(TAG,"in onActivityResult");
+        if (requestCode == 1) {
+            if (resultCode == 1) {
+                if(data.getBooleanExtra("Cheated",false))
+                {
+                    Toast.makeText(this,"You have cheated",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(this,"You did not cheat",Toast.LENGTH_SHORT).show();
+                }
+            }
+            else if(resultCode==0)
+            {
+                Toast.makeText(this,"You did not cheat",Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     @Override
