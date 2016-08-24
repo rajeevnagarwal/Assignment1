@@ -31,6 +31,8 @@
         android:background="@drawable/button_drawable"
         android:layout_marginTop="@dimen/margin_top"
         android:drawableLeft="@mipmap/hint_icon"
+        android:id="@+id/hint_button"
+        android:onClick="hint"
         android:padding="5dp"
         android:layout_gravity="center"
         />
@@ -43,6 +45,7 @@
         android:layout_marginTop="@dimen/margin_top"
         android:padding="5dp"
         android:textColor="@color/red"
+        android:id="@+id/hint_view"
         android:background="@drawable/question_drawable"
         />
 </LinearLayout>

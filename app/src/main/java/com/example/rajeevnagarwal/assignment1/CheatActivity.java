@@ -13,8 +13,8 @@ import static android.view.View.VISIBLE;
 
 public class CheatActivity extends AppCompatActivity {
 
-    private Button mCheatButton;
-    private TextView mCheatView;
+    private Button mCheatButton;//Button Object
+    private TextView mCheatView;//Cheat TextView
     private int CurrentPrime;
     private Boolean Result;
     private Boolean Cheated;
@@ -36,14 +36,12 @@ public class CheatActivity extends AppCompatActivity {
                 mCheatView.setVisibility(VISIBLE);
                 if(Result)
                 {
-                    mCheatView.setText(CurrentPrime+ R.string.yesprime);
-
+                    mCheatView.setText(CurrentPrime+ " "+getResources().getString(R.string.yes_prime));
 
                 }
                 else
                 {
-                    mCheatView.setText(CurrentPrime+R.string.noprime);
-
+                    mCheatView.setText(CurrentPrime+ " "+getResources().getString(R.string.no_prime));
 
                 }
                 Cheated = true;
@@ -62,23 +60,27 @@ public class CheatActivity extends AppCompatActivity {
             visible_view = false;
         }
     }
+    //Instantiating objects
     public void initialize()
     {
+        Log.d(TAG,"In initialize()");
         mCheatButton = (Button)findViewById(R.id.cheat_button);
         mCheatView = (TextView)findViewById(R.id.cheat_view);
         visible_view = false;
         Cheated = false;
         mCheatView.setText("");
     }
+    //Setting result for the parent activity
     public void getBack()
     {
+        Log.d(TAG,"In getBack()");
         Intent i = getIntent();
         i.putExtra("Cheated",Cheated);
         setResult(1,i);
 
 
     }
-
+    // Showing cheat on button click
     public void cheat(View v)
     {
         Log.d(TAG,"In cheat");
@@ -87,15 +89,13 @@ public class CheatActivity extends AppCompatActivity {
         mCheatView.setVisibility(VISIBLE);
         if(Result)
         {
-            mCheatView.setText(CurrentPrime+R.string.yesprime);
+            mCheatView.setText(CurrentPrime+" "+getResources().getString(R.string.yes_prime));
         }
         else
         {
-            mCheatView.setText(CurrentPrime+R.string.noprime);
+            mCheatView.setText(CurrentPrime+" "+getResources().getString(R.string.no_prime));
         }
         getBack();
-
-
     }
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState)
