@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="Hello World!"
         android:textSize="20dp"
-        android:textColor="@color/black"
+        android:textColor="@color/yellow"
         android:layout_marginTop="@dimen/margin_top"
         android:id="@+id/QuestionView"
         android:background="@drawable/question_drawable"
