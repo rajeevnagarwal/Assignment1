@@ -32,6 +32,7 @@ public class HintActivity extends AppCompatActivity {
             {
                 mHintView.setVisibility(VISIBLE);
                 mHintView.setText("Check if "+CurrentPrime+" can be factorized");
+                taken_hint = true;
                 getBack();
             }
             else

@@ -31,6 +31,7 @@ public class CheatActivity extends AppCompatActivity {
             CurrentPrime = savedInstanceState.getInt("CurrentPrime",0);
             Result = savedInstanceState.getBoolean("Result",false);
             visible_view = savedInstanceState.getBoolean("Visible",false);
+            Cheated = savedInstanceState.getBoolean("Cheated",false);
             if(visible_view)
             {
                 mCheatView.setVisibility(VISIBLE);
@@ -58,6 +59,7 @@ public class CheatActivity extends AppCompatActivity {
             CurrentPrime = getIntent().getIntExtra("prime",0);
             Result = getIntent().getBooleanExtra("result",false);
             visible_view = false;
+            Cheated = false;
         }
     }
     //Instantiating objects
@@ -105,6 +107,7 @@ public class CheatActivity extends AppCompatActivity {
         savedInstanceState.putInt("CurrentPrime", CurrentPrime);
         savedInstanceState.putBoolean("Result", Result);
         savedInstanceState.putBoolean("Visible",visible_view);
+        savedInstanceState.putBoolean("Cheated",Cheated);
     }
     @Override
     protected void onResume()
